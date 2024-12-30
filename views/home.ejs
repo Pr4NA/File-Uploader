@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" href="styleHome.css">
+</head>
+<body>
+  <h1 class="title">Welcome to the Web-Site</h1>
+
+  <% if (!user) { %>
+    <div class="NoUser">
+      <a class="button" href="/log-in">LOG-IN</a>
+      <a class="button" href="/sign-up">SIGN-UP</a>
+    </div>
+  <% } else { %>
+    <div class="greeting">
+      <h2>Hello, <%= user.username %>!</h2>
+      <a class="button" href="/log-out">LOG-OUT</a>
+    </div>
+    
+    <h3 class="subheading">Your Folders:</h3>
+    <% if (folders.length > 0) { %>
+      <div class="grid-container">
+        <% folders.forEach(folder => { %>
+          <div class="folder-card" onclick="window.location.href='/folder/<%= folder.id %>'">
+            <strong class="Folder-Title"><%= folder.title %></strong>
+          </div>
+        <% }) %>
+      </div>
+      <div class="create-folder">
+        <a href="/createFolder" class="button">Create new folder</a>
+      </div>
+    <% } else { %>
+      <p class="no-folders">No folders created yet. <a href="/createFolder" class="link">Create one now!</a></p>
+    <% } %>
+  <% } %>
+</body>
+</html>

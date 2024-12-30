@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="styleLogIn.css">
+</head>
+<body>
+  <h1>Sign Up</h1>
+
+  <form action="/sign-up" method="POST">
+    
+    <div>
+      <label for="username">Username</label>
+      <input id="username" name="username" placeholder="username" type="text" value="<%= formData.username || '' %>" />
+      <% if (errors && formData && formData.username.length < 4) { %>
+          <p style="color: red;">Username must be at least 4 characters</p>
+      <% } %>
+    </div>
+
+    <div>
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" />
+      <% if (errors && formData && formData.password.length < 6) {  %>
+        <p style="color: red;">'Password must be at least 6 characters</p>
+    <% } %>
+    </div>
+
+    <div>
+      <label for="ConfirmPassword">Confirm Password</label>
+      <input id="ConfirmPassword" name="ConfirmPassword" type="password" />
+      <% if (errors && formData && formData.password !== formData.ConfirmPassword) { %>
+        <p style="color: red;">Passwords must match</p>
+    <% } %>
+    </div>
+
+    <button type="submit">SIGN UP</button>
+  </form>
+
+</body>
+</html>

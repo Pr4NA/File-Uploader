@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Files</title>
+  <link rel="stylesheet" href="/styleLogIn.css">
+  <!-- <style>
+    body {
+      background-color: lightblue;
+    }
+  </style> -->
+  
+</head>
+<body>
+  <h1>Add a file</h1>
+  <form action="/folder/<%= folderId %>/addFile" method="POST" enctype="multipart/form-data">
+    <label for="title">Title</label>
+    <input id="title" name="title" type="text" />
+    <label for="file_">File</label>
+    <input id="file_" name="file_" type="file" />
+    <button type="submit">UPLOAD</button>
+  </form>
+</body>
+</html>
